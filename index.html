@@ -12,22 +12,27 @@
         </style>
     </head>
     <body>
-        <div id="contents">
-            <h1>Kazuate</h1>
-            <p>0~999までの数字を当ててください。</p>
-            <input id="your_ans" type="number" min="0" max="999">
-            <input value="判定" type="button" onclick="btn1();">
-            <p id="chosen_num"></p>
-            <p id="judge"></p>
-            <p id="ans"></p>
-            <input value="もう一度" type="button" onclick="btn2();">
-        </div>
+        <div class="container">
+            <div id="contents">
+                <h1>Kazuate</h1>
+                <p>0~999までの数字を当ててください。</p>
+                <input id="your_ans" type="number" min="0" max="999">
+                <input class="btn btn-primary" value="判定" type="button" onclick="btn1();">
+                <p id="chosen_num"></p>
+                <p id="judge"></p>
+                <p id="ans"></p>
+                <input class="btn btn-outline-primary" value="もう一度" type="button" onclick="btn2();">
+                <input class="btn btn-outline-secondary"value="結果をLINEで送信" type="button" onclick="btn3();">
+
+            </div>
+        </div> 
     </body>
     <script>
         let rand = Math.floor(Math.random() * 1000);
         let your_ans = document.getElementById("your_ans");
-        let chosen_nums = []
+        let chosen_nums = [];
         console.log(rand)
+        let txt = "";
         function btn1() {
             let your_ans_num = Number(your_ans.value)
             let judge = document.getElementById("judge")
@@ -40,7 +45,8 @@
             } else if (rand > your_ans_num) {
                 judge.innerHTML = "もっと大きいよ。"
             } else {
-                judge.innerHTML = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。"
+                txt = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
+                judge.innerHTML = txt
             }
             document.getElementById("your_ans").value = ""
         }
@@ -51,6 +57,13 @@
             judge.innerHTML = ""
             chosen_nums = []
             console.log(rand)
+        }
+
+        function btn3() {
+            res = confirm("LINEで共有しますか？")
+            if (res == true) {
+                location.href = "https://line.me/R/share?text=" + txt + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
+            }
         }
     </script>
 </html>
