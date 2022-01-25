@@ -34,6 +34,7 @@
         let txt_for_line = "\nhttps://hideaki-hue.github.io/Kazuate/index.html";
         let i = 0
         let ans = document.getElementById("answer")
+        let btn_judge = document.querySelector("input[value='判定']")
         function btn1() {
             let your_ans_num = Number(your_ans.value)
             let judge = document.getElementById("judge")
@@ -49,8 +50,9 @@
                 let txt = "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
                 judge.innerHTML = "正解です！！！" + txt
                 txt_for_line = "A. " + String(rand) + " " + "[" + String(chosen_nums) + "]" + " " + txt + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
+                btn_judge.disabled = true
+                document.getElementById("your_ans").value = ""
             }
-            document.getElementById("your_ans").value = ""
             i = 0;
             ans.innerHTML = ""
         }
@@ -67,6 +69,9 @@
             document.getElementById("chosen_num").innerHTML = "";
             judge.innerHTML = ""
             chosen_nums = []
+            if (btn_judge.disabled == true) {
+                btn_judge.disabled = false;
+            }
         }
 
         function btn3() {
