@@ -31,8 +31,7 @@
         let rand = Math.floor(Math.random() * 1000);
         let your_ans = document.getElementById("your_ans");
         let chosen_nums = [];
-        console.log(rand)
-        let txt = "";
+        let txt_for_line = "\nhttps://hideaki-hue.github.io/Kazuate/index.html";
         let i = 0
         let ans = document.getElementById("answer")
         function btn1() {
@@ -47,8 +46,9 @@
             } else if (rand > your_ans_num) {
                 judge.innerHTML = "もっと大きいよ。"
             } else {
-                txt = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
+                let txt = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
                 judge.innerHTML = txt
+                txt_for_line = "A. " + String(rand) + " " + "[" + String(chosen_nums) + "]" + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
             }
             document.getElementById("your_ans").value = ""
             i = 0;
@@ -67,13 +67,12 @@
             document.getElementById("chosen_num").innerHTML = "";
             judge.innerHTML = ""
             chosen_nums = []
-            console.log(rand)
         }
 
         function btn3() {
             res = confirm("LINEで共有しますか？")
             if (res == true) {
-                location.href = "https://line.me/R/share?text=" + txt + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
+                location.href = "https://line.me/R/share?text=" + txt_for_line
             }
         }
     </script>
