@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style>
+            #contents {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contents">
+            <h1>Kazuate</h1>
+            <p>0~999までの数字を当ててください。</p>
+            <input id="your_ans" type="number" min="0" max="999">
+            <input value="判定" type="button" onclick="btn1();">
+            <p id="chosen_num"></p>
+            <p id="judge"></p>
+            <p id="ans"></p>
+            <input value="もう一度" type="button" onclick="btn2();">
+        </div>
+    </body>
+    <script>
+        let rand = Math.floor(Math.random() * 1000);
+        let your_ans = document.getElementById("your_ans");
+        let chosen_nums = []
+        console.log(rand)
+        function btn1() {
+            let your_ans_num = Number(your_ans.value)
+            let judge = document.getElementById("judge")
+            judge.innerHTML = ""
+
+            chosen_nums.push(your_ans_num)
+            document.getElementById("chosen_num").innerHTML = "あなたの解答：" + String(chosen_nums)
+            if (rand < your_ans_num) {
+                judge.innerHTML = "もっと小さいよ。"
+            } else if (rand > your_ans_num) {
+                judge.innerHTML = "もっと大きいよ。"
+            } else {
+                judge.innerHTML = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。"
+            }
+            document.getElementById("your_ans").value = ""
+        }
+
+        function btn2() {
+            rand = Math.floor(Math.random() * 1000);
+            document.getElementById("chosen_num").innerHTML = "";
+            judge.innerHTML = ""
+            chosen_nums = []
+            console.log(rand)
+        }
+    </script>
+</html>
