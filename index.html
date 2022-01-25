@@ -46,9 +46,9 @@
             } else if (rand > your_ans_num) {
                 judge.innerHTML = "もっと大きいよ。"
             } else {
-                let txt = "正解です！！！" + "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
-                judge.innerHTML = txt
-                txt_for_line = "A. " + String(rand) + " " + "[" + String(chosen_nums) + "]" + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
+                let txt = "\nあなたは、" + String(chosen_nums.length) + "回目に正解しました。";
+                judge.innerHTML = "正解です！！！" + txt
+                txt_for_line = "A. " + String(rand) + " " + "[" + String(chosen_nums) + "]" + " " + txt + "\nhttps://hideaki-hue.github.io/Kazuate/index.html"
             }
             document.getElementById("your_ans").value = ""
             i = 0;
